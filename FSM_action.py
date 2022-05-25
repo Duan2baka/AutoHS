@@ -360,10 +360,13 @@ def MainMenuAction():
 
 def WaitMainMenu():
     print_out()
-    while get_screen.get_state() != FSM_MAIN_MENU:
-        click.click_middle()
+    while get_screen.get_state() != FSM_MAIN_MENU and get_screen.get_state() != FSM_CHOOSING_HERO:
+        click.enter_battle_mode()
         time.sleep(5)
-    return FSM_MAIN_MENU
+    if get_screen.get_state() == FSM_MAIN_MENU:
+        return FSM_MAIN_MENU
+    else:
+        return FSM_CHOOSING_HERO
 
 
 def HandleErrorAction():
