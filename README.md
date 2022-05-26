@@ -148,29 +148,31 @@ AAEDAfWfAwSwlgTnlgS1oQSWowQNr5YEs5YE+qAEsaEEsqEEvqEE0KEE1aEEiKIEi6IEjqIExaME0qME
 
 [comment]: <> (任何一个操作都会触发数据传输（比如空中乱晃鼠标……），而如果什么都不做炉石也会每个5秒跟服务器互相ping一下，应该是在确认是否掉线)
 
-[UPD 2022/5/27] 尝试更新了个猎人卡组，表现有待测试，代码如下
+[UPD 2022/5/27] 尝试更新了个猎人卡组，表现有待测试，卡组及代码如下
 
-### Script Hunter
-# Class: Hunter
-# Format: Classic
-#
-# 2x (1) Argent Squire
-# 2x (1) Leper Gnome
-# 2x (1) Timber Wolf
-# 2x (2) Dire Wolf Alpha
-# 2x (2) Ironbeak Owl
-# 2x (2) Knife Juggler
-# 2x (2) Loot Hoarder
-# 2x (2) River Crocolisk
-# 2x (2) Scavenging Hyena
-# 2x (2) Starving Buzzard
-# 2x (3) Animal Companion
-# 2x (3) Eaglehorn Bow
-# 1x (3) Mind Control Tech
-# 2x (3) Unleash the Hounds
-# 2x (4) Chillwind Yeti
-# 1x (6) Savannah Highmane
-# 
+```
+- Script Hunter
+- Class: Hunter
+- Format: Classic
+-
+- 2x (1) Argent Squire
+- 2x (1) Leper Gnome
+- 2x (1) Timber Wolf
+- 2x (2) Dire Wolf Alpha
+- 2x (2) Ironbeak Owl
+- 2x (2) Knife Juggler
+- 2x (2) Loot Hoarder
+- 2x (2) River Crocolisk
+- 2x (2) Scavenging Hyena
+- 2x (2) Starving Buzzard
+- 2x (3) Animal Companion
+- 2x (3) Eaglehorn Bow
+- 1x (3) Mind Control Tech
+- 2x (3) Unleash the Hounds
+- 2x (4) Chillwind Yeti
+- 1x (6) Savannah Highmane
+```
+卡组代码
+```
 AAEDAdGLBQLQoQTMogQOnZYEsJYEwJYEzJYEsZcEgqEEsqEEvaEE1aEE7qEEyqIEzaIEz6IEw6MEAA==
-# 
-# To use this deck, copy it to your clipboard and create a new deck in Hearthstone
+```
