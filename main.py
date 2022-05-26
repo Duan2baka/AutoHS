@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from FSM_action import system_exit, AutoHS_automata
 import keyboard
 from log_state import check_name

@@ -1,16 +1,42 @@
 import win32gui
 import win32api
 import win32con
+import win32print
 import pywintypes
 import time
 from pynput.mouse import Button, Controller
 import random
 import sys
+from win32.lib import win32con
 
 from constants.constants import *
 from print_info import *
 from get_screen import *
 
+def get_real_resolution():
+    """获取真实的分辨率"""
+    hDC = win32gui.GetDC(0)
+    wide = win32print.GetDeviceCaps(hDC, win32con.DESKTOPHORZRES)
+    high = win32print.GetDeviceCaps(hDC, win32con.DESKTOPVERTRES)
+    return {"wide": wide, "high": high}
+ 
+ 
+def get_screen_size():
+    """获取缩放后的分辨率"""
+    wide = win32api.GetSystemMetrics(0)
+    high = win32api.GetSystemMetrics(1)
+    return {"wide": wide, "high": high}
+ 
+ 
+def get_scaling():
+    '''获取屏幕的缩放比例'''
+    real_resolution = get_real_resolution()
+    screen_size = get_screen_size()
+    proportion = round(real_resolution['wide'] / screen_size['wide'], 2)
+    return proportion
+SCREEN_SCALING=get_scaling()
+SCREEN_wide = win32api.GetSystemMetrics(0)
+SCREEN_high = win32api.GetSystemMetrics(1)
 
 def rand_sleep(interval):
     base_time = interval * 0.75
@@ -31,11 +57,13 @@ def click_button(x, y, button):
 
 
 def left_click(x, y):
-    click_button(x, y, Button.left)
+    #click_button(x/SCREEN_SCALING, y/SCREEN_SCALING, Button.left)
+    click_button(int(x/1920*SCREEN_wide), int(y/1080*SCREEN_high), Button.left)
 
 
 def right_click(x, y):
-    click_button(x, y, Button.right)
+    #click_button(x/SCREEN_SCALING, y/SCREEN_SCALING, Button.right)
+    click_button(int(x/1920*SCREEN_wide), int(y/1080*SCREEN_high), Button.right)
 
 
 def choose_my_minion(mine_index, mine_num):
@@ -246,4 +274,4 @@ def enter_HS():
     rand_sleep(1)
 
     left, top, right, bottom = win32gui.GetWindowRect(battlenet_hwnd)
-    left_click(left + 180, bottom - 110)
+    click_button(left + 180,bottom - 110,Button.left)
