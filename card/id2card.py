@@ -54,4 +54,9 @@ ID2CARD_DICT = {
     "VAN_NEW1_041": StampedingKodo,
     "VAN_EX1_590": BloodKnight,
     "VAN_EX1_247": StormforgedAxe,
+    "VAN_EX1_536": EaglehornBow,  #鹰角弓
+    "VAN_EX1_538": UnleashTheHounds, #关门放狗
+    "VAN_NEW1_031": AnimalCompanion, #动物伙伴
+    "VAN_EX1_534": Highmane, #长鬃草原狮
+    "VAN_CS2_203": IronbeakOwl,#铁喙猫头鹰
 }

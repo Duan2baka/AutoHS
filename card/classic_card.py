@@ -262,3 +262,64 @@ class StormforgedAxe(WeaponCard):
                     return 2000,
 
         return cls.value,
+
+#鹰角弓
+class EaglehornBow(WeaponCard):
+    keep_in_hand_bool = False
+    value = 2.5
+
+    @classmethod
+    def best_h_and_arg(cls, state, hand_card_index):
+        # 不要已经有刀了再顶刀
+        if state.my_weapon is not None:
+            return 0,
+        if state.my_total_mana == 3:
+            for oppo_minion in state.touchable_oppo_minions:
+                # 如果能提起刀解了, 那太好了
+                if oppo_minion.health <= 3 and \
+                        not oppo_minion.divine_shield:
+                    return 2000,
+
+        return cls.value,
+
+
+#关门放狗
+class UnleashTheHounds(SpellNoPoint):
+    bias = -10
+    keep_in_hand_bool = False
+    @classmethod
+    def best_h_and_arg(cls, state, hand_card_index):
+        h_sum = 0
+        spell_power = state.my_total_spell_power
+        total_num = min((7-state.my_minion_num),state.oppo_minion_num)
+        return  total_num * 0.9,
+
+#动物伙伴
+class AnimalCompanion(SpellNoPoint):
+    value = 3
+    keep_in_hand_bool = True
+    
+#长鬃草原狮
+class Highmane(MinionNoPoint):
+    value = 7
+    keep_in_hand_bool = False
+
+#铁喙猫头鹰
+class IronbeakOwl(MinionPointOppo):
+    keep_in_hand_bool = False
+    @classmethod
+    def utilize_delta_h_and_arg(cls, state, hand_card_index):
+        # 不能让她下去点脸, 除非对面快死了
+        best_h = -0.1
+        best_oppo_index = -1
+
+        for oppo_index, oppo_minion in enumerate(state.oppo_minions):
+            if not oppo_minion.can_be_pointed_by_minion:
+                continue
+
+            delta_h = -0.1 + oppo_minion.taunt + oppo_minion.divine_shield + oppo_minion.windfury
+            if delta_h > best_h:
+                best_h = delta_h
+                best_oppo_index = oppo_index
+
+        return best_h, state.my_minion_num, best_oppo_index
