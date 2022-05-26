@@ -12,7 +12,7 @@ MY_NAME = constants.constants.YOUR_NAME
 def check_name():
     global MY_NAME
     if MY_NAME == "ChangeThis#54321":
-        MY_NAME = input("请输入你的炉石用户名, 例子: \"为所欲为、异灵术#54321\" (不用输入引号!)\n").strip()
+        MY_NAME = input("Input your hearthstone ID, for example: \"ExampleID#12345\"\n").strip()
 
 
 class LogState:

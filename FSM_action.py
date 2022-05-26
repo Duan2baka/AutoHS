@@ -71,7 +71,7 @@ def update_log_state():
 def system_exit():
     global quitting_flag
 
-    sys_print(f"一共完成了{game_count}场对战, 赢了{win_count}场")
+    sys_print(f"Finished {game_count} battles totally, {win_count} battle won")
     print_info_close()
 
     quitting_flag = True
@@ -188,8 +188,8 @@ def ChoosingCardAction():
                     detail_card.keep_in_hand(strategy_state, my_hand_index)
 
             if not has_print:
-                debug_print(f"手牌-[{my_hand_index}]({my_hand_card.name})"
-                            f"是否保留: {should_keep_in_hand}")
+                debug_print(f"hand-[{my_hand_index}]({my_hand_card.name})"
+                            f"keep-in-hand?: {should_keep_in_hand}")
 
             if not should_keep_in_hand:
                 click.replace_starting_card(my_hand_index, hand_card_num)
@@ -226,9 +226,9 @@ def Battling():
         if log_state.is_end:
             if log_state.my_entity.query_tag("PLAYSTATE") == "WON":
                 win_count += 1
-                info_print("你赢得了这场对战")
+                info_print("You won this battle")
             else:
-                info_print("你输了")
+                info_print("You lose")
             return FSM_QUITTING_BATTLE
 
         # 在对方回合等就行了

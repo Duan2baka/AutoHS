@@ -22,13 +22,13 @@ def read_json(re_download=False):
     json_path = dir_path + "/cards.json"
 
     if not os.path.exists(json_path):
-        sys_print("未找到cards.json,试图通过网络下载文件")
+        sys_print("can not find cards.json,attempt to download file through internet")
         download_json(json_path)
     elif re_download:
-        sys_print("疑似有新版本炉石数据，正在重新下载最新文件")
+        sys_print("a new version of Hearthstone data seems to be found, downloading latest file")
         download_json(json_path)
     else:
-        sys_print("cards.json已存在")
+        sys_print("cards.json exists")
 
     with open(json_path, "r", encoding="utf8") as f:
         json_string = f.read()
@@ -51,7 +51,7 @@ def query_json_dict(key):
     else:
         JSON_DICT = read_json(True)
         if key not in JSON_DICT:
-            error_print("出现未识别卡牌，程序无法继续")
+            error_print("unrecognized card found, program cannot continue")
             sys.exit(-1)
         return JSON_DICT[key]["name"]
 
