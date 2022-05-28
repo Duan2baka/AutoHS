@@ -347,7 +347,7 @@ class Polymorph(SpellPointOppo):
 
 #水元素
 class WaterElemental(MinionNoPoint):
-    value = 3.2
+    value = 3.5
     keep_in_hand_bool = True
 
 #火球术
@@ -413,12 +413,12 @@ class FrostBolt(SpellPointOppo):
 #奥术智慧
 class ArcaneIntellect(SpellNoPoint):
     keep_in_hand_bool = False
-    value = 3
+    value = 2.5
 
 #奥术飞弹
 class ArcaneMissiles(SpellNoPoint):
     keep_in_hand_bool = False
-
+    bias = 0
     @classmethod
     def best_h_and_arg(cls, state, hand_card_index):
         h_sum = 0
@@ -434,5 +434,5 @@ class ArcaneMissiles(SpellNoPoint):
         for dmg in range(0,damage+1):
             h_sum += P * state.oppo_hero.delta_h_after_damage(dmg)
             P = 1 / num
-            
+        print(h_sum)
         return h_sum + cls.bias,
