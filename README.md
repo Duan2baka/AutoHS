@@ -180,3 +180,31 @@ AAEDAfWfAwSwlgTnlgS1oQSWowQNr5YEs5YE+qAEsaEEsqEEvqEE0KEE1aEEiKIEi6IEjqIExaME0qME
 ```
 AAEDAdGLBQLQoQTMogQOnZYEsJYEwJYEzJYEsZcEgqEEsqEEvaEE1aEE7qEEyqIEzaIEz6IEw6MEAA==
 ```
+[UPD 2022/5/29] 经测试猎人卡组可以在经典传说4.5w名保持50胜率，表现不错
+[UPD 2022/5/29] 加了套法师卡组试试
+- Mage
+- Class: Mage
+- Format: Classic
+-
+- 2x (1) Arcane Missiles
+- 2x (1) Leper Gnome
+- 2x (1) Mana Wyrm
+- 1x (2) Bloodmage Thalnos
+- 1x (2) Doomsayer
+- 2x (2) Faerie Dragon
+- 2x (2) Frostbolt
+- 2x (2) Knife Juggler
+- 2x (2) Loot Hoarder
+- 2x (2) Sorcerer's Apprentice
+- 2x (3) Arcane Intellect
+- 2x (4) Chillwind Yeti
+- 2x (4) Fireball
+- 1x (4) Leeroy Jenkins
+- 1x (4) Polymorph
+- 2x (4) Water Elemental
+- 2x (5) Azure Drake
+ 
+卡组代码
+```
+AAEDAc2xAgTflQS1oQTcoQTFowQN4ZUE4pUE5pUE6JUEsJYE6ZYEvaEE1aEEk6IEoKMEv6MEw6MEx6MEAA==
+```

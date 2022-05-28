@@ -322,3 +322,117 @@ class IronbeakOwl(MinionPointOppo):
                 best_oppo_index = oppo_index
 
         return best_h, state.my_minion_num, best_oppo_index
+
+#变形术
+class Polymorph(SpellPointOppo):
+    bias = -6
+    keep_in_hand_bool = False
+
+    @classmethod
+    def best_h_and_arg(cls, state, hand_card_index):
+        best_delta_h = 0
+        best_oppo_index = -1
+
+        for oppo_index, oppo_minion in enumerate(state.oppo_minions):
+            if not oppo_minion.can_be_pointed_by_spell:
+                continue
+
+            delta_h = oppo_minion.heuristic_val - 1
+
+            if best_delta_h < delta_h:
+                best_delta_h = delta_h
+                best_oppo_index = oppo_index
+
+        return best_delta_h + cls.bias, best_oppo_index,
+
+#水元素
+class WaterElemental(MinionNoPoint):
+    value = 3.2
+    keep_in_hand_bool = True
+
+#火球术
+class FireBall(SpellPointOppo):
+    spell_type = SPELL_POINT_OPPO
+    bias = -4
+
+    @classmethod
+    def best_h_and_arg(cls, state, hand_card_index):
+        spell_power = state.my_total_spell_power
+        damage = 6 + spell_power
+        best_delta_h = state.oppo_hero.delta_h_after_damage(damage)
+        best_oppo_index = -1
+
+        for oppo_index, oppo_minion in enumerate(state.oppo_minions):
+            if not oppo_minion.can_be_pointed_by_spell:
+                continue
+            delta_h = oppo_minion.delta_h_after_damage(damage)
+            if best_delta_h < delta_h:
+                best_delta_h = delta_h
+                best_oppo_index = oppo_index
+
+        return best_delta_h + cls.bias, best_oppo_index,
+
+#火车王当火球用(没判断嘲讽)
+class LeeroyJenkins(MinionNoPoint):
+    keep_in_hand_bool = False
+    bias = -4
+
+    @classmethod
+    def utilize_delta_h_and_arg(cls, state, hand_card_index):
+        damage = 6 
+        best_delta_h = state.oppo_hero.delta_h_after_damage(damage)
+
+        for oppo_index, oppo_minion in enumerate(state.oppo_minions):
+            delta_h = oppo_minion.delta_h_after_damage(damage)
+            if best_delta_h < delta_h:
+                best_delta_h = delta_h
+        return best_delta_h,
+
+# 冰锥术
+class FrostBolt(SpellPointOppo):
+    spell_type = SPELL_POINT_OPPO
+    bias = -3
+
+    @classmethod
+    def best_h_and_arg(cls, state, hand_card_index):
+        spell_power = state.my_total_spell_power
+        damage = 3 + spell_power
+        best_delta_h = state.oppo_hero.delta_h_after_damage(damage)
+        best_oppo_index = -1
+
+        for oppo_index, oppo_minion in enumerate(state.oppo_minions):
+            if not oppo_minion.can_be_pointed_by_spell:
+                continue
+            delta_h = oppo_minion.delta_h_after_damage(damage)
+            if best_delta_h < delta_h:
+                best_delta_h = delta_h
+                best_oppo_index = oppo_index
+
+        return best_delta_h + cls.bias, best_oppo_index,
+
+#奥术智慧
+class ArcaneIntellect(SpellNoPoint):
+    keep_in_hand_bool = False
+    value = 3
+
+#奥术飞弹
+class ArcaneMissiles(SpellNoPoint):
+    keep_in_hand_bool = False
+
+    @classmethod
+    def best_h_and_arg(cls, state, hand_card_index):
+        h_sum = 0
+        spell_power = state.my_total_spell_power
+        damage = spell_power + 3
+        num = len(state.oppo_minions) + 1
+        for oppo_minion in state.oppo_minions:
+            P = 1 / num
+            for dmg in range(0,damage+1):
+                h_sum += P * oppo_minion.delta_h_after_damage(dmg)
+                P= P / num
+        P = 1 / num
+        for dmg in range(0,damage+1):
+            h_sum += P * state.oppo_hero.delta_h_after_damage(dmg)
+            P = 1 / num
+            
+        return h_sum + cls.bias,

@@ -60,4 +60,11 @@ ID2CARD_DICT = {
     "VAN_NEW1_031": AnimalCompanion, #动物伙伴
     "VAN_EX1_534": Highmane, #长鬃草原狮
     "VAN_CS2_203": IronbeakOwl,#铁喙猫头鹰
+    "VAN_CS2_022": Polymorph,#变形术
+    "VAN_CS2_033": WaterElemental,#水元素
+    "VAN_CS2_029": FireBall,#火球术
+    "VAN_EX1_116": LeeroyJenkins,#火车王！！！！！！
+    "VAN_EX1_275": FrostBolt,#冰锥术
+    "VAN_CS2_023":ArcaneIntellect,#奥术智慧
+    "VAN_EX1_277":ArcaneMissiles,#奥术飞弹
 }
