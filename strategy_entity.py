@@ -454,4 +454,6 @@ class StrategyHeroPower(StrategyEntity):
             return ID2CARD_DICT["TOTEMIC_CALL"]
         if self.name == "稳固射击":
             return ID2CARD_DICT["BALLISTA_SHOT"]
+        if self.name == "火焰冲击":
+            return ID2CARD_DICT["FIRE_BLAST"]
         return None

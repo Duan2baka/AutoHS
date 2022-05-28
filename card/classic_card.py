@@ -309,11 +309,10 @@ class IronbeakOwl(MinionPointOppo):
     keep_in_hand_bool = False
     @classmethod
     def utilize_delta_h_and_arg(cls, state, hand_card_index):
-        # 不能让她下去点脸, 除非对面快死了
-        best_h = -0.1
+        best_h = -2
         best_oppo_index = -1
-
         for oppo_index, oppo_minion in enumerate(state.oppo_minions):
+            flag = False
             if not oppo_minion.can_be_pointed_by_minion:
                 continue
 

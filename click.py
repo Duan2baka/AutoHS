@@ -220,6 +220,30 @@ def use_skill_no_point():
     click_skill()
     cancel_click()
 
+def use_skill_point_oppo(op_index, op_num):
+    click_skill()
+    if op_index >= 0:
+        choose_opponent_minion(op_index, op_num)
+    else:
+        choose_oppo_hero()
+    
+    cancel_click()
+    '''
+    def use_with_arg(cls, state, card_index, *args):
+        if len(args) == 0:
+            hand_card = state.my_hand_cards[card_index]
+            warn_print(f"Receive 0 args in using SpellPointOppo card {hand_card.name}")
+            return
+
+        oppo_index = args[0]
+        click.choose_card(card_index, state.my_hand_card_num)
+        if oppo_index >= 0:
+            click.choose_opponent_minion(oppo_index, state.oppo_minion_num)
+        else:
+            click.choose_oppo_hero()
+        click.cancel_click()
+        time.sleep(cls.wait_time)
+    '''
 
 def use_skill_point_mine(my_index, my_num):
     click_skill()

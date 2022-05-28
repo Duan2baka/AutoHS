@@ -11,6 +11,7 @@ ID2CARD_DICT = {
     "TOTEMIC_CALL": TotemicCall,
     "LESSER_HEAL": LesserHeal,
     "BALLISTA_SHOT": BallistaShot,
+    "FIRE_BLAST": FireBlast,
 
     # 标准模式-牧师
     "YOP_032": ArmorVendor,  # 护甲商贩
