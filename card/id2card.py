@@ -64,7 +64,7 @@ ID2CARD_DICT = {
     "VAN_CS2_033": WaterElemental,#水元素
     "VAN_CS2_029": FireBall,#火球术
     "VAN_EX1_116": LeeroyJenkins,#火车王！！！！！！
-    "VAN_EX1_275": FrostBolt,#冰锥术
-    "VAN_CS2_023":ArcaneIntellect,#奥术智慧
-    "VAN_EX1_277":ArcaneMissiles,#奥术飞弹
+    "VAN_CS2_024": FrostBolt,#寒冰箭
+    "VAN_CS2_023": ArcaneIntellect,#奥术智慧
+    "VAN_EX1_277": ArcaneMissiles,#奥术飞弹
 }

@@ -92,7 +92,7 @@ class FeralSpirit(SpellNoPoint):
 
 # 碧蓝幼龙
 class AzureDrake(MinionNoPoint):
-    value = 3.5
+    value = 3
     keep_in_hand_bool = False
 
 
@@ -266,7 +266,7 @@ class StormforgedAxe(WeaponCard):
 #鹰角弓
 class EaglehornBow(WeaponCard):
     keep_in_hand_bool = False
-    value = 2.5
+    value = 2
 
     @classmethod
     def best_h_and_arg(cls, state, hand_card_index):
@@ -278,7 +278,7 @@ class EaglehornBow(WeaponCard):
                 # 如果能提起刀解了, 那太好了
                 if oppo_minion.health <= 3 and \
                         not oppo_minion.divine_shield:
-                    return 2000,
+                    return 5,
 
         return cls.value,
 
@@ -388,10 +388,10 @@ class LeeroyJenkins(MinionNoPoint):
                 best_delta_h = delta_h
         return best_delta_h + cls.bias,
 
-# 冰锥术
+# 寒冰箭
 class FrostBolt(SpellPointOppo):
     spell_type = SPELL_POINT_OPPO
-    bias = -3
+    bias = -2
 
     @classmethod
     def best_h_and_arg(cls, state, hand_card_index):
@@ -413,7 +413,7 @@ class FrostBolt(SpellPointOppo):
 #奥术智慧
 class ArcaneIntellect(SpellNoPoint):
     keep_in_hand_bool = False
-    value = 2.5
+    value = 2
 
 #奥术飞弹
 class ArcaneMissiles(SpellNoPoint):
