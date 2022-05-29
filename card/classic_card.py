@@ -312,11 +312,10 @@ class IronbeakOwl(MinionPointOppo):
         best_h = -2
         best_oppo_index = -1
         for oppo_index, oppo_minion in enumerate(state.oppo_minions):
-            flag = False
             if not oppo_minion.can_be_pointed_by_minion:
                 continue
 
-            delta_h = -0.1 + oppo_minion.taunt + oppo_minion.divine_shield + oppo_minion.windfury
+            delta_h = oppo_minion.taunt + oppo_minion.divine_shield + oppo_minion.windfury + 1
             if delta_h > best_h:
                 best_h = delta_h
                 best_oppo_index = oppo_index
@@ -353,6 +352,7 @@ class WaterElemental(MinionNoPoint):
 #火球术
 class FireBall(SpellPointOppo):
     spell_type = SPELL_POINT_OPPO
+    keep_in_hand_bool = False
     bias = -4
 
     @classmethod
@@ -386,7 +386,7 @@ class LeeroyJenkins(MinionNoPoint):
             delta_h = oppo_minion.delta_h_after_damage(damage)
             if best_delta_h < delta_h:
                 best_delta_h = delta_h
-        return best_delta_h,
+        return best_delta_h + cls.bias,
 
 # 冰锥术
 class FrostBolt(SpellPointOppo):
