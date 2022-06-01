@@ -436,3 +436,55 @@ class ArcaneMissiles(SpellNoPoint):
             P = 1 / num
         print(h_sum)
         return h_sum + cls.bias,
+
+class Innervate(SpellNoPoint):
+    @classmethod
+    def best_h_and_arg(cls, state, hand_card_index):
+        best_delta_h = 0
+
+        for another_index, hand_card in enumerate(state.my_hand_cards):
+            delta_h = 0
+
+            if hand_card.current_cost != state.my_last_mana + 1:
+                continue
+            if hand_card.is_coin:
+                continue
+
+            detail_card = hand_card.detail_card
+            if detail_card is None:
+                if hand_card.cardtype == CARD_MINION and not hand_card.battlecry:
+                    delta_h = MinionNoPoint.best_h_and_arg(state, another_index)[0]
+            else:
+                delta_h = detail_card.best_h_and_arg(state, another_index)[0]
+
+            delta_h -= 1  # 如果跳费之后能使用的卡显著强于不跳费的卡, 就跳币
+            best_delta_h = max(best_delta_h, delta_h)
+
+        return best_delta_h,
+
+class Swipe(SpellPointOppo):
+    spell_type = SPELL_POINT_OPPO
+    keep_in_hand_bool = False
+    bias = -4
+
+    @classmethod
+    def best_h_and_arg(cls, state, hand_card_index):
+        spell_power = state.my_total_spell_power
+        best_delta_h = state.oppo_hero.delta_h_after_damage(spell_power + 4)
+        for oppo_index, oppo_minion in enumerate(state.oppo_minions):
+            best_delta_h += oppo_minion.delta_h_after_damage(spell_power + 1)
+        best_oppo_index = -1
+
+        for oppo_index, oppo_minion in enumerate(state.oppo_minions):
+            if not oppo_minion.can_be_pointed_by_spell:
+                continue
+            delta_h = state.oppo_hero.delta_h_after_damage(spell_power + 1)
+            delta_h = oppo_minion.delta_h_after_damage(spell_power + 4)
+            for other_oppo_index, other_oppo_minion in enumerate(state.oppo_minions):
+                if oppo_index != other_oppo_index:
+                    delta_h += oppo_minion.delta_h_after_damage(spell_power + 1)
+            if best_delta_h < delta_h:
+                best_delta_h = delta_h
+                best_oppo_index = oppo_index
+
+        return best_delta_h + cls.bias, best_oppo_index,

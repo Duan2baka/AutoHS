@@ -67,4 +67,6 @@ ID2CARD_DICT = {
     "VAN_CS2_024": FrostBolt,#寒冰箭
     "VAN_CS2_023": ArcaneIntellect,#奥术智慧
     "VAN_EX1_277": ArcaneMissiles,#奥术飞弹
+    "VAN_EX1_169": Innervate,#激活
+    "VAN_CS2_012": Swipe,#横扫
 }
