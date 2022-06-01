@@ -12,6 +12,7 @@ ID2CARD_DICT = {
     "LESSER_HEAL": LesserHeal,
     "BALLISTA_SHOT": BallistaShot,
     "FIRE_BLAST": FireBlast,
+    "SHAPE_SHIFT": ShapeShift,
 
     # 标准模式-牧师
     "YOP_032": ArmorVendor,  # 护甲商贩
