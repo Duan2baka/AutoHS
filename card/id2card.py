@@ -13,6 +13,7 @@ ID2CARD_DICT = {
     "BALLISTA_SHOT": BallistaShot,
     "FIRE_BLAST": FireBlast,
     "SHAPE_SHIFT": ShapeShift,
+    "ARMOR_UP": ArmorUp,
 
     # 标准模式-牧师
     "YOP_032": ArmorVendor,  # 护甲商贩
@@ -70,4 +71,6 @@ ID2CARD_DICT = {
     "VAN_EX1_277": ArcaneMissiles,#奥术飞弹
     "VAN_EX1_169": Innervate,#激活
     "VAN_CS2_012": Swipe,#横扫
+    "VAN_CS2_106": FieryWarAxe, #炽炎战斧
+    "VAN_EX1_414": GrommashHellscream#格罗玛什·地狱咆哮
 }

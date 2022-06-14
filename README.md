@@ -208,3 +208,31 @@ AAEDAdGLBQLQoQTMogQOnZYEsJYEwJYEzJYEsZcEgqEEsqEEvaEE1aEE7qEEyqIEzaIEz6IEw6MEAA==
 ```
 AAEDAc2xAgTflQS1oQTcoQTFowQN4ZUE4pUE5pUE6JUEsJYE6ZYEvaEE1aEEk6IEoKMEv6MEw6MEx6MEAA==
 ```
+
+[UPD 2022/6/15] 德鲁伊卡组
+- Druid
+- Class: Druid
+- Format: Classic
+-
+- 2x (0) Innervate
+- 2x (1) Argent Squire
+- 2x (1) Leper Gnome
+- 1x (2) Bloodmage Thalnos
+- 2x (2) Doomsayer
+- 2x (2) Knife Juggler
+- 2x (2) Loot Hoarder
+- 2x (3) Acolyte of Pain
+- 1x (3) Blood Knight
+- 2x (3) Mind Control Tech
+- 2x (4) Chillwind Yeti
+- 1x (4) Leeroy Jenkins
+- 2x (4) Sen'jin Shieldmasta
+- 2x (4) Swipe
+- 2x (5) Azure Drake
+- 2x (8) Ironbark Protector
+- 1x (8) Ragnaros the Firelord
+
+卡组代码
+```
+AAEDAc6LBQS1oQTcoQSYogSWowQN25UEr5YEsJYEvZYE3ZYEsaEEsqEEvaEE0KEE1aEEk6IEw6MExaMEAA==
+```

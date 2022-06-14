@@ -488,3 +488,28 @@ class Swipe(SpellPointOppo):
                 best_oppo_index = oppo_index
 
         return best_delta_h + cls.bias, best_oppo_index,
+
+
+#炽炎战斧
+class FieryWarAxe(WeaponCard):
+    keep_in_hand_bool = True
+    value = 2.5
+
+    @classmethod
+    def best_h_and_arg(cls, state, hand_card_index):
+        # 不要已经有刀了再顶刀
+        if state.my_weapon is not None:
+            return 0,
+        if state.my_total_mana == 3:
+            for oppo_minion in state.touchable_oppo_minions:
+                # 如果能提起刀解了, 那太好了
+                if oppo_minion.health <= 3 and \
+                        not oppo_minion.divine_shield:
+                    return 5,
+
+        return cls.value,
+
+#格罗玛什·地狱咆哮
+class GrommashHellscream(MinionNoPoint):
+    value = 10
+    keep_in_hand_bool = False
