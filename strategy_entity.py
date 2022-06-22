@@ -460,4 +460,6 @@ class StrategyHeroPower(StrategyEntity):
             return ID2CARD_DICT["SHAPE_SHIFT"]
         if self.name == "全副武装！":
             return ID2CARD_DICT["ARMOR_UP"]
+        if self.name == "援军":
+            return ID2CARD_DICT["REINFORCE"]
         return None

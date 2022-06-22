@@ -434,7 +434,7 @@ class ArcaneMissiles(SpellNoPoint):
         for dmg in range(0,damage+1):
             h_sum += P * state.oppo_hero.delta_h_after_damage(dmg)
             P = 1 / num
-        print(h_sum)
+        #print(h_sum)
         return h_sum + cls.bias,
 
 class Innervate(SpellNoPoint):
@@ -500,7 +500,7 @@ class FieryWarAxe(WeaponCard):
         # 不要已经有刀了再顶刀
         if state.my_weapon is not None:
             return 0,
-        if state.my_total_mana == 3:
+        if state.my_total_mana == 2:
             for oppo_minion in state.touchable_oppo_minions:
                 # 如果能提起刀解了, 那太好了
                 if oppo_minion.health <= 3 and \
@@ -513,3 +513,40 @@ class FieryWarAxe(WeaponCard):
 class GrommashHellscream(MinionNoPoint):
     value = 10
     keep_in_hand_bool = False
+
+class TruesilverChampion(WeaponCard):
+    keep_in_hand_bool = False
+    value = 3.5
+
+    @classmethod
+    def best_h_and_arg(cls, state, hand_card_index):
+        # 不要已经有刀了再顶刀
+        if state.my_weapon is not None:
+            return 0,
+        if state.my_total_mana == 4:
+            for oppo_minion in state.touchable_oppo_minions:
+                # 如果能提起刀解了, 那太好了
+                if oppo_minion.health <= 4 and \
+                        not oppo_minion.divine_shield:
+                    return 5,
+
+        return cls.value,
+
+
+class TirionFordring(MinionNoPoint):
+    value = 10
+    keep_in_hand_bool = False
+
+class Consecration(SpellNoPoint):
+    bias = -10
+    keep_in_hand_bool = False
+
+    @classmethod
+    def best_h_and_arg(cls, state, hand_card_index):
+        spell_power = state.my_total_spell_power
+        h_sum = state.oppo_hero.delta_h_after_damage(2 + spell_power)
+
+        for oppo_minion in state.oppo_minions:
+            h_sum += oppo_minion.delta_h_after_damage(2 + spell_power)
+
+        return h_sum + cls.bias,

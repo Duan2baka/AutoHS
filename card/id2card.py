@@ -14,6 +14,7 @@ ID2CARD_DICT = {
     "FIRE_BLAST": FireBlast,
     "SHAPE_SHIFT": ShapeShift,
     "ARMOR_UP": ArmorUp,
+    "REINFORCE": Reinforce,
 
     # 标准模式-牧师
     "YOP_032": ArmorVendor,  # 护甲商贩
@@ -72,5 +73,9 @@ ID2CARD_DICT = {
     "VAN_EX1_169": Innervate,#激活
     "VAN_CS2_012": Swipe,#横扫
     "VAN_CS2_106": FieryWarAxe, #炽炎战斧
-    "VAN_EX1_414": GrommashHellscream#格罗玛什·地狱咆哮
+    "VAN_EX1_414": GrommashHellscream,#格罗玛什·地狱咆哮
+    "VAN_CS2_097": TruesilverChampion,#真银圣剑
+    "VAN_EX1_383": TirionFordring,#佛丁
+    "VAN_CS2_093": Consecration,#奉献
+
 }
