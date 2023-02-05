@@ -132,14 +132,19 @@ def get_state():
 
     if pixel_very_similar(im_opencv, 1070, 1090, [20, 51, 103]) or \
             pixel_very_similar(im_opencv, 305, 705, [21, 43, 95]):  # 万圣节主界面会变
+        #print("get state result: FSM_MAIN_MENU")
         return FSM_MAIN_MENU
     elif pixel_very_similar(im_opencv, 1070, 1090, [8, 18, 24]):
+        #print("get state result: FSM_CHOOSING_HERO")
         return FSM_CHOOSING_HERO
-    elif pixel_very_similar(im_opencv, 1070, 1090, [17, 18, 19]):
+    elif pixel_very_similar(im_opencv, 1070, 1090, [18, 19, 20]):
+        #print("get state result: FSM_MATHING")
         return FSM_MATCHING
-    elif pixel_very_similar(im_opencv, 860, 960, [71, 71, 71]):
+    elif pixel_very_similar(im_opencv, 860, 960, [255, 197, 126]):
+        #print("get state result: FSM_CHOOSING_CARD")
         return FSM_CHOOSING_CARD
     else:
+        #print("get state result: FSM_BATTLING")
         return FSM_BATTLING
 
     # if list(im_opencv[1070][1090][:3]) == [20, 51, 104] or \
@@ -151,7 +156,7 @@ def get_state():
     #     return FSM_MATCHING
     # if list(im_opencv[860][960][:3]) == [71, 71, 71]:
     #     return FSM_CHOOSING_CARD
-    # return FSM_BATTLING877777777777777777777777777777777777777777777777777777777777
+    # return FSM_BATTLING
 
 
 # def image_hash(img):

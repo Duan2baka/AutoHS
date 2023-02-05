@@ -13,7 +13,21 @@ def check_name():
     global MY_NAME
     if MY_NAME == "ChangeThis#54321":
         MY_NAME = input("Input your hearthstone ID, for example: \"ExampleID#12345\"\n").strip()
+    if MY_NAME == "DoubleAccount":
+        print("Input 1 for Duan2baka#5666, 2 for Duan2baka#4409")
+        if int(input("Input your option: ")) == 2:
+            MY_NAME="Duan2baka#4409"
+            print("Login in as Duan2baka#4409")
+        else:
+            MY_NAME="Duan2baka#5666"
+            print("Login in as Duan2baka#5666")
 
+def check_name1():
+    global MY_NAME
+    if MY_NAME == "ChangeThis#54321":
+        MY_NAME = input("Input your hearthstone ID, for example: \"ExampleID#12345\"\n").strip()
+    MY_NAME="Duan2baka#4409"
+    print("Login in as Duan2baka#4409")
 
 class LogState:
     def __init__(self):

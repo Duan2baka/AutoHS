@@ -49,13 +49,14 @@ def init():
 def update_log_state():
     log_container = next(log_iter)
     if log_container.log_type == LOG_CONTAINER_ERROR:
+        #print("update_log_state returns false(error)");
         return False
 
     for log_line_container in log_container.message_list:
         ok = update_state(log_state, log_line_container)
         # if not ok:
         #     return False
-
+ 
     if DEBUG_FILE_WRITE:
         with open("./log/game_state_snapshot.txt", "w", encoding="utf8") as f:
             f.write(str(log_state))
@@ -63,8 +64,9 @@ def update_log_state():
     # 注意如果Power.log没有更新, 这个函数依然会返回. 应该考虑到game_state只是被初始化
     # 过而没有进一步更新的可能
     if log_state.game_entity_id == 0:
+        #print("update_log_state returns false");
         return False
-
+    #print("update_log_state returns true");
     return True
 
 
@@ -154,6 +156,7 @@ def MatchingAction():
 def ChoosingCardAction():
     global choose_hero_count
     choose_hero_count = 0
+    #print("enter ChoosingCardAction")
 
     print_out()
     time.sleep(21)
