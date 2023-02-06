@@ -26,8 +26,17 @@ def check_name1():
     global MY_NAME
     if MY_NAME == "ChangeThis#54321":
         MY_NAME = input("Input your hearthstone ID, for example: \"ExampleID#12345\"\n").strip()
-    MY_NAME="Duan2baka#4409"
-    print("Login in as Duan2baka#4409")
+    print("Select your account")
+    option = int(input("Input your option: "))
+    if option == 1:
+        MY_NAME="Duan2baka#4409"
+        print("Login in as Duan2baka#4409")
+    elif option == 2:
+        MY_NAME="LaebedoO172#3172"
+        print("Login in as LaebedoO172#3172")
+    elif option == 3:
+        MY_NAME="zP1nG"
+        print("Login in as zP1nG")
 
 class LogState:
     def __init__(self):
