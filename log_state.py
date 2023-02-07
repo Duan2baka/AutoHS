@@ -35,8 +35,8 @@ def check_name1():
         MY_NAME="LaebedoO172#3172"
         print("Login in as LaebedoO172#3172")
     elif option == 3:
-        MY_NAME="zP1nG"
-        print("Login in as zP1nG")
+        MY_NAME="zP1nG#3263"
+        print("Login in as zP1nG#3263")
 
 class LogState:
     def __init__(self):
