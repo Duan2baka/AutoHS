@@ -10,32 +10,39 @@ from strategy import StrategyState
 from log_state import *
 from datetime import datetime
 
-FSM_state = ""
-time_begin = 0.0
-game_count = 0
-win_count = 0
-quitting_flag = False
-log_state = LogState()
-log_iter = log_iter_func(HEARTHSTONE_POWER_LOG_PATH)
-choose_hero_count = 0
-
-def get_log(HEARTHSTONE_POWER_LOG_PATH):
-    tmp = HEARTHSTONE_POWER_LOG_PATH
-    HEARTHSTONE_POWER_LOG_PATH = os.path.join(HEARTHSTONE_POWER_LOG_PATH, "../..")
+def get_log(_HEARTHSTONE_POWER_LOG_PATH):
+    tmp = _HEARTHSTONE_POWER_LOG_PATH
+    _HEARTHSTONE_POWER_LOG_PATH = os.path.join(HEARTHSTONE_POWER_LOG_PATH, "..")
     arr = []
-    for root, dirs, files in os.walk(HEARTHSTONE_POWER_LOG_PATH):
+    for root, dirs, files in os.walk(_HEARTHSTONE_POWER_LOG_PATH):
+        print(dirs)
         arr = dirs
         break
     if len(arr):
         dt_arr = [datetime.strptime(s, 'Hearthstone_%Y_%m_%d_%H_%M_%S') for s in arr]
         latest = max(dt_arr)
         latest_idx = dt_arr.index(latest)
-        return os.path.join(HEARTHSTONE_POWER_LOG_PATH, arr[latest_idx], "Power.log") 
+        return os.path.join(_HEARTHSTONE_POWER_LOG_PATH, arr[latest_idx], "Power.log") 
     else:
         return tmp
 
+FSM_state = ""
+time_begin = 0.0
+game_count = 0
+win_count = 0
+quitting_flag = False
+log_state = LogState()
+if not os.path.exists(HEARTHSTONE_POWER_LOG_PATH):
+    HEARTHSTONE_POWER_LOG_PATH = get_log(HEARTHSTONE_POWER_LOG_PATH)
+print(HEARTHSTONE_POWER_LOG_PATH)
+log_iter = log_iter_func(HEARTHSTONE_POWER_LOG_PATH)
+choose_hero_count = 0
+print(HEARTHSTONE_POWER_LOG_PATH)
+
 
 def init():
+    global HEARTHSTONE_POWER_LOG_PATH
+    print(HEARTHSTONE_POWER_LOG_PATH)
     global log_state, log_iter, choose_hero_count
 
     # 有时候炉石退出时python握着Power.log的读锁, 因而炉石无法
