@@ -12,7 +12,7 @@ from datetime import datetime
 
 def get_log(_HEARTHSTONE_POWER_LOG_PATH):
     tmp = _HEARTHSTONE_POWER_LOG_PATH
-    _HEARTHSTONE_POWER_LOG_PATH = os.path.join(HEARTHSTONE_POWER_LOG_PATH, "..")
+    _HEARTHSTONE_POWER_LOG_PATH = os.path.join(HEARTHSTONE_POWER_LOG_PATH, "../..")
     arr = []
     for root, dirs, files in os.walk(_HEARTHSTONE_POWER_LOG_PATH):
         print(dirs)
@@ -44,7 +44,7 @@ def init():
     global HEARTHSTONE_POWER_LOG_PATH
     print(HEARTHSTONE_POWER_LOG_PATH)
     global log_state, log_iter, choose_hero_count
-
+    HEARTHSTONE_POWER_LOG_PATH = get_log(HEARTHSTONE_POWER_LOG_PATH)
     # 有时候炉石退出时python握着Power.log的读锁, 因而炉石无法
     # 删除Power.log. 而当炉石重启时, 炉石会从头开始写Power.log,
     # 但此时python会读入完整的Power.log, 并在原来的末尾等待新的写入. 那
@@ -61,17 +61,6 @@ def init():
             info_print("Success to truncate Power.log")
         except OSError:
             warn_print("Fail to truncate Power.log, maybe someone is using it")
-    else:
-        HEARTHSTONE_POWER_LOG_PATH = get_log(HEARTHSTONE_POWER_LOG_PATH)
-        
-        if os.path.exists(HEARTHSTONE_POWER_LOG_PATH):
-            try:
-                file_handle = open(HEARTHSTONE_POWER_LOG_PATH, "w")
-                file_handle.seek(0)
-                file_handle.truncate()
-                info_print("Success to truncate Power.log")
-            except OSError:
-                warn_print("Fail to truncate Power.log, maybe someone is using it")
         else:
             info_print("Power.log does not exist")
 
@@ -397,6 +386,7 @@ def MainMenuAction():
 
 
 def WaitMainMenu():
+    init()
     print_out()
     while get_screen.get_state() != FSM_MAIN_MENU and get_screen.get_state() != FSM_CHOOSING_HERO:
         click.enter_battle_mode()
@@ -455,6 +445,7 @@ def AutoHS_automata():
         time.sleep(0.5)
 
     while 1:
+        init()
         if quitting_flag:
             sys.exit(0)
         if FSM_state == "":
