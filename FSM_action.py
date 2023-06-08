@@ -373,6 +373,7 @@ def GoBackHSAction():
 
 
 def MainMenuAction():
+    init()
     print_out()
 
     time.sleep(3)
