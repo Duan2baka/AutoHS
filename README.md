@@ -18,6 +18,8 @@ pip install -r requirements.txt
    - 名为`YOUR_NAME`的变量需要改成你的炉石用户名，形如`为所欲为、异灵术#54321`。如果不在文件里修改，每次启动脚本时系统都会提示你手动输入用户名。
    - 名为`HEARTHSTONE_POWER_LOG_PATH`的变量必须修改成你的电脑上的炉石传说日志`Power.log`的路径，`Power.log`在炉石安装路径下的`Logs/`文件夹中。
 
+## ***update 2023/6/8 前几天炉石更新后log文件夹的结构出现了问题，更新之后要在log后面随便加一个路径，例如，如果log文件夹为C://Logs,constants里面的HEARTHSTONE_POWER_LOG_PATH要改为C://Logs/1/Power.log***
+
 > `Power.log`中记录了对战过程中每一个**对象**(**Entity**)的每一项**属性**(**tag**)的变化。 这个**对象**包括玩家、英雄、英雄技能、卡牌(无论在牌库里、手牌中、战场上还是坟地里)等。
 > 
 > `Power.log`会在进入炉石后第一次对战开始时创建，在退出炉石后会被重命名为`Power_bk.log`，在再一次进入炉石时被删除。
